@@ -221,164 +221,170 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    // get the screen width
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 29, 15, 74),
       body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // title
-              Text(
-                'TicTacToe',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36,
-                  color: Colors.white,
-                ),
-              ),
-
-              Text(
-                'Simple game created using Flutter',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white70,
-                ),
-              ),
-
-              SizedBox(height: 45),
-
-              // enter code
-              Text(
-                'Enter code to join a game',
-                style: TextStyle(
-                  //fontWeight: FontWeight.bold,
-                  fontSize: 24,
-                  color: Colors.white,
-                ),
-              ),
-
-              SizedBox(height: 10),
-
-              // code textfield
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 44, 29, 91),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: TextField(
-                      controller: _codeController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Code',
-                        hintStyle: TextStyle(color: Colors.white),
-                      ),
-                    ),
+          child: SizedBox(
+            width: screenWidth > 400 ? 400 : screenWidth,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // title
+                Text(
+                  'TicTacToe',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 36,
+                    color: Colors.white,
                   ),
                 ),
-              ),
 
-              SizedBox(height: 10),
+                Text(
+                  'Simple game created using Flutter',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white70,
+                  ),
+                ),
 
-              // join button
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: GestureDetector(
-                  onTap: joinGame,
+                SizedBox(height: 45),
+
+                // enter code
+                Text(
+                  'Enter code to join a game',
+                  style: TextStyle(
+                    //fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    color: Colors.white,
+                  ),
+                ),
+
+                SizedBox(height: 10),
+
+                // code textfield
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
-                    padding: EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 37, 228, 174),
+                      color: Color.fromARGB(255, 44, 29, 91),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Center(
-                      child: Text(
-                        'Join',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 29, 15, 74),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0),
+                      child: TextField(
+                        controller: _codeController,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Code',
+                          hintStyle: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(height: 10),
+                SizedBox(height: 10),
 
-              // or text
-              Text(
-                'or',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white70,
-                ),
-              ),
-
-              SizedBox(height: 10),
-
-              // create a new game button
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: GestureDetector(
-                  onTap: () {
-                    codeProcess();
-                    joinNewGame();
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 37, 228, 174),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Create a new game',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 29, 15, 74),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
+                // join button
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: GestureDetector(
+                    onTap: joinGame,
+                    child: Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 37, 228, 174),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Join',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 29, 15, 74),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              /*
-              Expanded(
-                child: FutureBuilder(
-                  future: getDocId(),
-                  builder: (context, snapshot) {
-                    return ListView.builder(
-                      itemCount: docIDs.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: GetActiveCode(documentId: docIDs[index]),
-                        );
-                        //updateTheList();
-                      },
-                    );
-                  },
-                ),
-              ),
 
-              Column(
-                children: [
-                  Text(
-                    'Current code list : ' + displayTheList(),
-                    style: TextStyle(
-                      color: Colors.white,
+                SizedBox(height: 10),
+
+                // or text
+                Text(
+                  'or',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white70,
+                  ),
+                ),
+
+                SizedBox(height: 10),
+
+                // create a new game button
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      codeProcess();
+                      joinNewGame();
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 37, 228, 174),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Create a new game',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 29, 15, 74),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
-                ],
-              )
-              */
-            ],
+                ),
+                /*
+                Expanded(
+                  child: FutureBuilder(
+                    future: getDocId(),
+                    builder: (context, snapshot) {
+                      return ListView.builder(
+                        itemCount: docIDs.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: GetActiveCode(documentId: docIDs[index]),
+                          );
+                          //updateTheList();
+                        },
+                      );
+                    },
+                  ),
+                ),
+          
+                Column(
+                  children: [
+                    Text(
+                      'Current code list : ' + displayTheList(),
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                )
+                */
+              ],
+            ),
           ),
         ),
       ),

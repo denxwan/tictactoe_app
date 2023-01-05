@@ -45,3 +45,6 @@ app.*.map.json
 
 # Xcode Runner files
 **/ios/Runner/GoogleService-Info.plist
+
+# index html for the web
+/web/index.html

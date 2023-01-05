@@ -361,60 +361,27 @@ class _GamePageState extends State<GamePage> {
 
   @override
   Widget build(BuildContext context) {
+    // get the screen width
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 29, 15, 74),
-      body: Column(
-        children: [
-          // space for title or something / top
-          Expanded(
-            flex: 0,
-            child: Container(
-              child: SafeArea(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      child: Container(
-                        padding: EdgeInsets.all(25),
-                        decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 44, 29, 91),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Center(
-                          child: Wrap(
-                            //mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Session Code: ',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
-                                ),
-                              ),
-                              Text(
-                                widget.currentCode.toString(),
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 37, 228, 174),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 24,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        //SizedBox(width: 20),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 25.0),
-                          child: Padding(
+      body: SafeArea(
+        child: Center(
+          child: SizedBox(
+            width: screenWidth > 400 ? 400 : screenWidth,
+            child: Column(
+              children: [
+                // space for title or something / top
+                Expanded(
+                  flex: 0,
+                  child: Container(
+                    child: SafeArea(
+                      child: Column(
+                        children: [
+                          Padding(
                             padding:
-                                const EdgeInsets.symmetric(horizontal: 0.0),
+                                const EdgeInsets.symmetric(horizontal: 25.0),
                             child: Container(
                               padding: EdgeInsets.all(25),
                               decoration: BoxDecoration(
@@ -422,11 +389,11 @@ class _GamePageState extends State<GamePage> {
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: Center(
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                child: Wrap(
+                                  //mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Turn : ',
+                                      'Session Code: ',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -434,7 +401,7 @@ class _GamePageState extends State<GamePage> {
                                       ),
                                     ),
                                     Text(
-                                      checkPlayerTurn(p1Turn),
+                                      widget.currentCode.toString(),
                                       style: TextStyle(
                                         color:
                                             Color.fromARGB(255, 37, 228, 174),
@@ -447,166 +414,245 @@ class _GamePageState extends State<GamePage> {
                               ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Container(
-                            padding: EdgeInsets.all(25),
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 44, 29, 91),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  /*
-                                  Text(
-                                    'Color :',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24,
+                          SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              //SizedBox(width: 20),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 25.0),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 0.0),
+                                  child: Container(
+                                    padding: EdgeInsets.all(25),
+                                    decoration: BoxDecoration(
+                                      color: Color.fromARGB(255, 44, 29, 91),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Turn : ',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 24,
+                                            ),
+                                          ),
+                                          Text(
+                                            checkPlayerTurn(p1Turn),
+                                            style: TextStyle(
+                                              color: Color.fromARGB(
+                                                  255, 37, 228, 174),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 24,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  */
-                                  Icon(
-                                    Icons.square,
-                                    color: checkPlayerColor(),
-                                    size: 30,
-                                  ),
-                                ],
+                                ),
                               ),
-                            ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10.0),
+                                child: Container(
+                                  padding: EdgeInsets.all(25),
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 44, 29, 91),
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  child: Center(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        /*
+                                        Text(
+                                          'Color :',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 24,
+                                          ),
+                                        ),
+                                        */
+                                        Icon(
+                                          Icons.square,
+                                          color: checkPlayerColor(),
+                                          size: 30,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
-          ),
 
-          // game grid
-          Expanded(
-            flex: 3,
-            child: GridView.builder(
-              itemCount: totalNumberOfSquares,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: rowSize,
-              ),
-              itemBuilder: (context, index) {
-                /*
-                if (playerPos.contains(index)) {
-                  return const PlayerPixel();
-                } else {
-                  return const BlankPixel();
-                }*/
-                if (playerPos.contains(index)) {
-                  return GestureDetector(
-                    child: PlayerPixel(),
-                  );
-                } else if (player2Pos.contains(index)) {
-                  return GestureDetector(
-                    child: Player2Pixel(),
-                  );
-                } else {
-                  return GestureDetector(
-                    child: BlankPixel(),
-                    onTap: () {
+                // game grid
+                Expanded(
+                  flex: 5,
+                  child: GridView.builder(
+                    itemCount: totalNumberOfSquares,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: rowSize,
+                    ),
+                    itemBuilder: (context, index) {
                       /*
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content:
-                                Text('You clicked index : ' + index.toString()),
-                                //Text(playerPos.toString()),
-                          );
-                        },
-                      );
-                      */
-
-                      addPlayerPos(index);
-                      updateFirebase(index);
-                      setState(() {});
-
-                      checkGameGrid();
-
-                      // checking if all the spaces are full
-                      if (playerPos.length + player2Pos.length == 9) {
-                        if (!anyoneWon) {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                content: Text('Game over!'),
-                              );
-                            },
-                          );
-                          //clearGrid();
-                          clearGridFromDatabase();
-                        }
-                      }
-                      anyoneWon = false;
-
-                      /* old sample winning method
-                      if (eq(playerPos, [0, 1, 2])) {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              content: Text(checkPlayerTurn(p1Turn) + ' win!'),
+                      if (playerPos.contains(index)) {
+                        return const PlayerPixel();
+                      } else {
+                        return const BlankPixel();
+                      }*/
+                      if (playerPos.contains(index)) {
+                        return GestureDetector(
+                          child: PlayerPixel(),
+                        );
+                      } else if (player2Pos.contains(index)) {
+                        return GestureDetector(
+                          child: Player2Pixel(),
+                        );
+                      } else {
+                        return GestureDetector(
+                          child: BlankPixel(),
+                          onTap: () {
+                            /*
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content:
+                                      Text('You clicked index : ' + index.toString()),
+                                      //Text(playerPos.toString()),
+                                );
+                              },
                             );
+                            */
+
+                            addPlayerPos(index);
+                            updateFirebase(index);
+                            setState(() {});
+                            setState(() {});
+
+                            checkGameGrid();
+
+                            // checking if all the spaces are full
+                            if (playerPos.length + player2Pos.length == 9) {
+                              if (!anyoneWon) {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Text('Game over!'),
+                                    );
+                                  },
+                                );
+                                //clearGrid();
+                                clearGridFromDatabase();
+                              }
+                            }
+                            anyoneWon = false;
+
+                            /* old sample winning method
+                            if (eq(playerPos, [0, 1, 2])) {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Text(checkPlayerTurn(p1Turn) + ' win!'),
+                                  );
+                                },
+                              );
+                              clearGrid();
+                            }
+                            */
                           },
                         );
-                        clearGrid();
                       }
-                      */
                     },
-                  );
-                }
-              },
-            ),
-          ),
+                  ),
+                ),
 
-          // space for bottom : Debug data
-          Expanded(
-            child: Container(
-              child: Column(
-                children: [
-                  //Text('Current session\'s code: ' +
-                  //widget.currentCode.toString()),
-                  Text('Player 1 Position List: ' + playerPos.toString()),
-                  Text('Player 2 Position List: ' + player2Pos.toString()),
-                  //Text('Turn: ' + checkPlayerTurn(p1Turn)),
-                  Text('Database value of player 1 position: ' +
-                      databasePlayer1Pos.toString()),
-                  Text('Database value of player 2 position: ' +
-                      databasePlayer2Pos.toString()),
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                // space for bottom : Debug data
+                Expanded(
+                  child: Container(
+                    child: Column(
                       children: [
-                        MaterialButton(
-                          child: Text(
-                            'clear the grid',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 29, 15, 74),
-                            ),
+                        //Text('Current session\'s code: ' +
+                        //widget.currentCode.toString()),
+                        //Text('Player 1 Position List: ' + playerPos.toString()),
+                        //Text(
+                        //    'Player 2 Position List: ' + player2Pos.toString()),
+                        //Text('Turn: ' + checkPlayerTurn(p1Turn)),
+                        Text('Database value of player 1 position: ' +
+                            databasePlayer1Pos.toString()),
+                        Text('Database value of player 2 position: ' +
+                            databasePlayer2Pos.toString()),
+                        /*
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              MaterialButton(
+                                child: Text(
+                                  'clear the grid',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 29, 15, 74),
+                                  ),
+                                ),
+                                color: Color.fromARGB(255, 37, 228, 174),
+                                onPressed: () {
+                                  clearGrid();
+                                },
+                              ),
+                              SizedBox(width: 10),
+                              MaterialButton(
+                                child: Text(
+                                  'clear the player list',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 29, 15, 74),
+                                  ),
+                                ),
+                                color: Color.fromARGB(255, 37, 228, 174),
+                                onPressed: () {
+                                  /*
+                                  // deleting the loading screen
+                                  Navigator.of(context).pop();
+          
+                                  // navigating to the game page
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => LoginPage()));
+                                  
+                                  updateGame(false);
+                                  clearPlayerList();
+                                  */
+                                },
+                              ),
+                            ],
                           ),
-                          color: Color.fromARGB(255, 37, 228, 174),
-                          onPressed: () {
-                            clearGrid();
-                          },
                         ),
-                        SizedBox(width: 10),
+                        */
+                        Text('Doc ID: ' + docId),
+                        /*
                         MaterialButton(
                           child: Text(
-                            'clear the player list',
+                            'get data from db',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 29, 15, 74),
@@ -615,51 +661,24 @@ class _GamePageState extends State<GamePage> {
                           color: Color.fromARGB(255, 37, 228, 174),
                           onPressed: () {
                             /*
-                            // deleting the loading screen
-                            Navigator.of(context).pop();
-
-                            // navigating to the game page
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginPage()));
-                            
-                            updateGame(false);
-                            clearPlayerList();
+                            if (databasePlayer1Pos.length == 0) {
+                              print('im null');
+                              updateDataList();
+                            } else {
+                              print('im not null');
+                            }
                             */
+                            updateDataList();
                           },
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
-                  Text('Doc ID: ' + docId),
-                  /*
-                  MaterialButton(
-                    child: Text(
-                      'get data from db',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 29, 15, 74),
-                      ),
-                    ),
-                    color: Color.fromARGB(255, 37, 228, 174),
-                    onPressed: () {
-                      /*
-                      if (databasePlayer1Pos.length == 0) {
-                        print('im null');
-                        updateDataList();
-                      } else {
-                        print('im not null');
-                      }
-                      */
-                      updateDataList();
-                    },
-                  ),*/
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
