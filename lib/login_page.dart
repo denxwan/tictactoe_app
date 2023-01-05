@@ -229,7 +229,7 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Center(
           child: SizedBox(
-            width: screenWidth > 400 ? 400 : screenWidth,
+            width: screenWidth > 380 ? 380 : screenWidth,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
